@@ -1,0 +1,22 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync
+      - run: uv run pytest -q
+      - name: Render the CV template end to end (docx only; runners have no Word)
+        run: uv run python -m tools.render_cv cv/master-es.md --no-pdf
+      - name: Import the search dependencies (JobSpy ships native binaries)
+        run: uv run python -c "import jobspy, tools.search; print('ok')"

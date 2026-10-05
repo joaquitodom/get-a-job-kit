@@ -1,0 +1,111 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv run python -m tools.render_cv:*)",
+      "Bash(uv run python -m tools.search:*)",
+      "Bash(uv run python -m tools.daily:*)",
+      "Bash(uv run python -m tools.labels:*)",
+      "Bash(uv run python -m tools.notion_upload:*)",
+      "Bash(uv run python -m tools.portales:*)",
+      "Bash(uv run python -m tools.aviso:*)",
+      "Bash(uv --version)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git pull:*)",
+      "Edit(profile/**)",
+      "Edit(cv/**)",
+      "Edit(postulaciones/**)",
+      "Edit(data/**)",
+      "Edit(PEDIDOS.md)",
+      "mcp__claude_ai_Notion__notion-fetch",
+      "mcp__claude_ai_Notion__notion-search",
+      "mcp__claude_ai_Notion__notion-query-data-sources",
+      "mcp__claude_ai_Notion__notion-create-pages",
+      "mcp__claude_ai_Notion__notion-update-page",
+      "mcp__claude_ai_Notion__notion-create-file-upload",
+      "mcp__claude_ai_Gmail__search_threads",
+      "mcp__claude_ai_Gmail__get_thread",
+      "mcp__claude_ai_Gmail__get_message",
+      "mcp__claude_ai_Gmail__list_labels",
+      "mcp__claude_ai_Gmail__create_label",
+      "mcp__claude_ai_Gmail__label_thread",
+      "mcp__claude_ai_Gmail__label_message",
+      "mcp__claude_ai_Gmail__update_message_labels",
+      "mcp__Claude_Browser__navigate",
+      "mcp__Claude_Browser__get_page_text",
+      "mcp__Claude_Browser__read_page",
+      "mcp__Claude_Browser__javascript_tool"
+    ],
+    "ask": [
+      "mcp__claude_ai_Gmail__reply",
+      "mcp__claude_ai_Gmail__forward",
+      "mcp__claude_ai_Gmail__trash_message",
+      "mcp__claude_ai_Gmail__trash_thread",
+      "Bash(git push --force:*)"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv",
+            "args": [
+              "run",
+              "--quiet",
+              "python",
+              "-m",
+              "tools.sync",
+              "pull"
+            ],
+            "timeout": 30,
+            "statusMessage": "Sincronizando el kit"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv",
+            "args": [
+              "run",
+              "--quiet",
+              "python",
+              "-m",
+              "tools.sync",
+              "push"
+            ],
+            "timeout": 30,
+            "statusMessage": "Guardando avances"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "mcp__claude_ai_Gmail__send_message",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv",
+            "args": [
+              "run",
+              "--quiet",
+              "python",
+              "-m",
+              "tools.mail_guard"
+            ],
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}

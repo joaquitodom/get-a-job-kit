@@ -1,0 +1,11 @@
+# Copiá este archivo a profile/datos-formularios.toml y completalo con él. Sin ese archivo la postulación asistida no corre.
+# Nunca pongas acá DNI, CUIL, pasaporte ni contraseñas: esos campos los completa él a mano, siempre.
+nombre = ""
+apellido = ""
+email = ""
+telefono = ""
+linkedin = ""
+ciudad = ""
+disponibilidad = ""      # por ejemplo "Inmediata" o "30 días"
+pretension = ""          # valor por defecto; la corrida usa la pretensión por tipo de puesto de preferences.md si está
+demograficos_prefiero_no_decir = false   # true solo si él dijo que en género, discapacidad, etc. prefiere no responder

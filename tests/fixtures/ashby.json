@@ -1,0 +1,33 @@
+{
+ "apiVersion": "1",
+ "jobs": [
+  {
+   "id": "34413f8d-26bf-4bbc-8ade-eb309a0e2245",
+   "title": " Security Engineer, Cloud",
+   "jobUrl": "https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245",
+   "location": "New York, NY (HQ)",
+   "isRemote": true,
+   "workplaceType": "Hybrid",
+   "isListed": true,
+   "publishedAt": "2026-04-07T17:12:35.753+00:00",
+   "descriptionPlain": "ABOUT RAMP\n\nRamp is building the smart infrastructure for finance teams, embedded in the transaction flow of every dollar a business spends. We automate how over $200B in annualized spend flows in and out of 70,000+ companies: authorizing payments, flagging risk, categorizing spend, and closing books.\n\nThe problems are high-stakes, data-dense, and unforgiving.\n\nWe hire people with high agency and ",
+   "compensation": {
+    "scrapeableCompensationSalarySummary": "$211.4K - $290.6K"
+   }
+  },
+  {
+   "id": "f564dcf9-9390-4a3f-896f-8047a5086040",
+   "title": "Mobile Engineer, Android",
+   "jobUrl": "https://jobs.ashbyhq.com/ramp/f564dcf9-9390-4a3f-896f-8047a5086040",
+   "location": "New York, NY (HQ)",
+   "isRemote": true,
+   "workplaceType": "Hybrid",
+   "isListed": false,
+   "publishedAt": "2025-07-31T21:58:34.674+00:00",
+   "descriptionPlain": "ABOUT RAMP\n\nRamp is building the smart infrastructure for finance teams, embedded in the transaction flow of every dollar a business spends. We automate how over $200B in annualized spend flows in and out of 70,000+ companies: authorizing payments, flagging risk, categorizing spend, and closing books.\n\nThe problems are high-stakes, data-dense, and unforgiving.\n\nWe hire people with high agency and ",
+   "compensation": {
+    "scrapeableCompensationSalarySummary": "$189K - $330K"
+   }
+  }
+ ]
+}

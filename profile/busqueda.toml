@@ -1,0 +1,34 @@
+# PLANTILLA: Claude la completa con la skill armar-perfil a partir de las respuestas de la entrevista.
+# Nada de este archivo se asume: si está vacío, la búsqueda no corre.
+
+# Términos de búsqueda (derivados de los puestos que él confirmó)
+terms = []
+
+# Ubicación y país para los buscadores generales
+location = ""
+country = ""
+
+# Buscadores generales vía JobSpy: "linkedin", "indeed", "google" (google hoy devuelve poco o nada)
+jobspy_sites = []
+
+# Cuántos avisos por término y de cuántas horas de antigüedad como máximo
+results_per_term = 25
+hours_old = 72
+
+# Empresas que publican sus avisos en Greenhouse, Lever o Ashby (el identificador que aparece en la URL de sus avisos)
+[companies]
+greenhouse = []
+lever = []
+ashby = []
+workday = []  # páginas de empleo Workday, ej. "https://empresa.wd1.myworkdayjobs.com/Sitio"
+
+# Funciones opcionales: todas apagadas hasta que la persona las elija (skill guia).
+# mi_email = ""                 # reporte diario a tu propia casilla
+# reporte = "enviar"            # o "borrador"
+# gmail_etiqueta = ""           # etiqueta de Gmail para los mails de búsqueda
+# archivar_sin_accion = false   # sacar de la bandeja lo que no pide acción (siempre se lista en el reporte)
+# busqueda_remota = false       # búsqueda semanal de remotos para el exterior y multilaterales
+# postulacion_asistida = false
+# pdf_nombre = ""               # nombre neutro del PDF que mandás
+# pdf_carpeta = ""
+# max_para_decidir = 45

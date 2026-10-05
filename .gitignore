@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.docx
+data/
+# Documentos internos de empleadores: nunca a GitHub
+profile/evidencia-*
+privado/
