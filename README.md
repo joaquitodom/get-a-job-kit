@@ -6,6 +6,8 @@ Tu asistente de búsqueda laboral, gratis y para cualquier rubro. Funciona dentr
 
 ## Qué hace por vos
 
+Vos armás tu kit: al empezar te pregunta qué querés usar, prendés solo lo que te sirve y lo cambiás cuando quieras con un mensaje.
+
 1. **Te ayuda a definir qué trabajo buscar.** Una entrevista corta sobre lo que hiciste, lo que te gusta y lo que te importa, y te propone 2 a 4 caminos concretos con títulos reales de avisos.
 2. **Arma tu perfil.** Una entrevista guiada que registra toda tu experiencia con evidencia, para que nada del CV se caiga en una entrevista.
 3. **Arma o mejora tu CV.** Lo revisa, te dice qué le falta y lo reescribe más fuerte, sin inventar nada. Y si querés, un CV a medida para cada aviso.
@@ -18,8 +20,8 @@ Tu asistente de búsqueda laboral, gratis y para cualquier rubro. Funciona dentr
 ## Reglas que respeta siempre
 
 - Nunca pone en el CV algo que no hiciste o no podés defender.
-- Nunca se postula, manda mensajes ni acepta nada sin tu "sí" en el chat.
-- Nunca escribe tus contraseñas ni crea cuentas: cuando hace falta entrar, entrás vos.
+- Nunca se postula por vos: te dice con qué CV y te postulás vos.
+- Nunca automatiza LinkedIn ni el "Easy Apply".
 - Tus datos quedan en tu computadora y en tu propio repositorio privado.
 
 ## Qué necesitás

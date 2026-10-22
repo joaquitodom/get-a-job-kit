@@ -7,7 +7,7 @@
   @page { size: A4; margin: 0; }
   :root {
     --ink: #3A2A1E; --ink2: #5E4A3A; --muted: #8C7663; --line: #E6D9C6;
-    --cream: #FBF6EE; --sand: #F1E6D4; --sand2: #EADBC3;
+    --cream: #FBF6EE; --sand: #F1E6D4; --sand2: #EADBC3; --card: #FFFDF9;
     --terra: #B8603A; --terra-soft: #F4DFD2; --olive: #6F7A48; --olive-soft: #E6E8D3;
     --ochre: #C9963F; --ochre-soft: #F6E8CC; --bark: #4A3326;
   }
@@ -17,29 +17,42 @@
   .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; background: var(--cream); }
   .page:last-child { page-break-after: auto; }
   .blob { position: absolute; border-radius: 50%; z-index: 0; }
+  .wrap { position: relative; z-index: 1; padding: 0 18mm; }
+
+  h2 { font-size: 16pt; font-weight: 800; letter-spacing: -.01em; color: var(--bark); }
+  h2 small { display: block; font-size: 8.5pt; font-weight: 700; color: var(--olive); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .sub { font-size: 10pt; color: var(--ink2); margin-top: 1.5mm; line-height: 1.45; }
+  .sub b { color: var(--bark); }
+  h4 { font-size: 10.5pt; font-weight: 800; color: var(--bark); }
 
   /* Hero */
-  .hero { position: relative; padding: 16mm 18mm 9mm; z-index: 1; }
+  .hero { padding-top: 12mm; }
   .tag { display: inline-block; font-size: 8.5pt; letter-spacing: .14em; text-transform: uppercase; color: var(--terra);
     background: var(--terra-soft); padding: 1.3mm 3.5mm; border-radius: 10mm; margin-bottom: 5mm; }
   .hero h1 { font-size: 36pt; font-weight: 800; letter-spacing: -.02em; line-height: 1; color: var(--bark); }
   .hero h1 span { color: var(--terra); }
-  .hero p.lead { font-size: 12pt; line-height: 1.5; color: var(--ink2); margin-top: 4mm; max-width: 150mm; }
+  .hero p.lead { font-size: 12pt; line-height: 1.5; color: var(--ink2); margin-top: 3.5mm; max-width: 174mm; }
   .hero p.lead b { color: var(--ink); font-weight: 600; }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; margin-top: 7mm; }
-  .stat { background: var(--sand); border-radius: 6mm 6mm 6mm 1.5mm; padding: 3.5mm 4.5mm; }
-  .stat .n { font-size: 19pt; font-weight: 800; color: var(--terra); }
-  .stat .l { font-size: 8.8pt; color: var(--ink2); line-height: 1.35; margin-top: .5mm; }
 
-  .body { padding: 5mm 18mm 0; position: relative; z-index: 1; }
-  h2 { font-size: 16pt; font-weight: 800; letter-spacing: -.01em; color: var(--bark); }
-  h2 small { display: block; font-size: 8.5pt; font-weight: 700; color: var(--olive); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 1.5mm; }
-  .sub { font-size: 10pt; color: var(--muted); margin-top: 1.5mm; }
+  /* Start band */
+  .start { background: var(--bark); color: #FBF6EE; border-radius: 9mm 9mm 9mm 2.5mm; margin-top: 5.5mm; padding: 4.5mm 6mm; }
+  .start .head { display: flex; justify-content: space-between; align-items: baseline; }
+  .start .head b { font-size: 12pt; font-weight: 800; }
+  .start .head span { font-size: 8.5pt; color: #D9CBB8; }
+  .start .row { display: grid; grid-template-columns: 1fr 6mm 1fr 6mm 1fr; align-items: center; margin-top: 3.5mm; }
+  .start .s { display: grid; grid-template-columns: 8mm 1fr; gap: 2.5mm; align-items: center; }
+  .start .n { width: 8mm; height: 8mm; border-radius: 50%; background: var(--ochre); color: var(--bark); font-weight: 800; font-size: 11pt; display: flex; align-items: center; justify-content: center; }
+  .start .t { font-size: 10pt; font-weight: 700; line-height: 1.25; }
+  .start .d { font-size: 8.3pt; color: #D9CBB8; margin-top: .6mm; line-height: 1.3; }
+  .start .arrow { color: var(--ochre); font-size: 13pt; text-align: center; }
+  .start code { font-family: Consolas, monospace; background: rgba(255,255,255,.14); padding: 0 1mm; border-radius: 1mm; }
 
-  /* Steps */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 5mm; }
-  .step { background: #FFFDF9; border: 1px solid var(--line); border-radius: 7mm 7mm 7mm 2mm; padding: 4mm 4.5mm; position: relative; }
-  .step .num { position: absolute; top: 4mm; right: 5mm; font-size: 18pt; font-weight: 800; color: var(--sand2); line-height: 1; }
+  /* Tools */
+  .tools-sec { margin-top: 6mm; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; margin-top: 4mm; }
+  .step { background: var(--card); border: 1px solid var(--line); border-radius: 7mm 7mm 7mm 2mm; padding: 3.5mm 4.5mm; position: relative; }
+  .step.off { background: var(--sand); border-style: dashed; }
+  .step.off h3, .step.off p, .step.off .icon { opacity: .55; }
   .icon { width: 10mm; height: 10mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
   .icon svg { width: 5.6mm; height: 5.6mm; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .i1 { background: var(--terra-soft); } .i1 svg { stroke: var(--terra); }
@@ -47,21 +60,32 @@
   .i3 { background: var(--ochre-soft); } .i3 svg { stroke: #A8772A; }
   .step h3 { font-size: 10.5pt; font-weight: 700; margin-top: 2.5mm; color: var(--bark); }
   .step p { font-size: 8.8pt; line-height: 1.42; color: var(--ink2); margin-top: 1.2mm; }
+  .sw { position: absolute; top: 4.5mm; right: 4.5mm; width: 9mm; height: 5mm; border-radius: 3mm; background: var(--olive); }
+  .sw::after { content: ""; position: absolute; top: .7mm; right: .7mm; width: 3.6mm; height: 3.6mm; border-radius: 50%; background: #FFFDF9; }
+  .sw.off { background: #CDBBA2; }
+  .sw.off::after { right: auto; left: .7mm; }
+  .base { position: absolute; top: 4.3mm; right: 4.5mm; font-size: 7pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--terra); background: var(--terra-soft); padding: .6mm 2mm; border-radius: 3mm; }
+  .offnote { font-size: 7.8pt; font-style: italic; color: var(--muted); margin-top: 1.5mm; }
+  .legend { display: flex; gap: 6mm; margin-top: 3mm; font-size: 8.3pt; color: var(--muted); align-items: center; }
+  .legend i { display: inline-block; position: relative; width: 7mm; height: 4mm; border-radius: 2.5mm; background: var(--olive); vertical-align: -1mm; margin-right: 1.5mm; }
+  .legend i::after { content: ""; position: absolute; top: .55mm; right: .55mm; width: 2.9mm; height: 2.9mm; border-radius: 50%; background: #FFFDF9; }
+  .legend i.off { background: #CDBBA2; }
+  .legend i.off::after { right: auto; left: .55mm; }
 
   /* Privacy */
-  .privacy { margin-top: 6mm; background: var(--olive); color: #FBF6EE; border-radius: 9mm 9mm 9mm 2.5mm; padding: 5.5mm 6mm; display: grid; grid-template-columns: 14mm 1fr; gap: 4mm; align-items: center; position: relative; overflow: hidden; }
+  .privacy { margin-top: 4.5mm; background: var(--olive); color: #FBF6EE; border-radius: 9mm 9mm 9mm 2.5mm; padding: 4.5mm 6mm; display: grid; grid-template-columns: 13mm 1fr; gap: 4mm; align-items: center; position: relative; overflow: hidden; }
   .privacy::after { content: ""; position: absolute; right: -14mm; bottom: -18mm; width: 50mm; height: 50mm; border-radius: 50%; background: rgba(255,255,255,.08); }
-  .privacy .lock { width: 14mm; height: 14mm; border-radius: 50%; background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center; }
-  .privacy .lock svg { width: 7mm; height: 7mm; fill: none; stroke: #FBF6EE; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .privacy h4 { font-size: 12pt; font-weight: 800; }
-  .privacy p { font-size: 9.2pt; line-height: 1.45; color: #EDEBDD; margin-top: 1.2mm; }
+  .privacy .lock { width: 13mm; height: 13mm; border-radius: 50%; background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center; }
+  .privacy .lock svg { width: 6.5mm; height: 6.5mm; fill: none; stroke: #FBF6EE; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .privacy h4 { font-size: 12pt; color: #FBF6EE; }
+  .privacy p { font-size: 9.2pt; line-height: 1.45; color: #EDEBDD; margin-top: 1mm; }
 
   .foot { position: absolute; bottom: 8mm; left: 18mm; right: 18mm; display: flex; justify-content: space-between; font-size: 8pt; color: var(--muted); border-top: 1px solid var(--line); padding-top: 3mm; z-index: 1; }
 
-  /* Page 2 */
-  .top2 { padding: 15mm 18mm 0; position: relative; z-index: 1; }
-  .timeline { margin-top: 7mm; }
-  .tl { display: grid; grid-template-columns: 19mm 8mm 1fr; align-items: start; min-height: 15.5mm; }
+  /* Page 2: timeline */
+  .top2 { padding-top: 12mm; }
+  .timeline { margin-top: 5mm; }
+  .tl { display: grid; grid-template-columns: 19mm 8mm 1fr; align-items: start; min-height: 12.6mm; }
   .tl .time { font-size: 9.5pt; font-weight: 700; color: var(--bark); padding-top: .6mm; }
   .tl .dot { position: relative; height: 100%; }
   .tl .dot::before { content: ""; position: absolute; left: 2.2mm; top: 1.2mm; width: 3.4mm; height: 3.4mm; border-radius: 50%; background: var(--olive); box-shadow: 0 0 0 1.2mm var(--olive-soft); }
@@ -69,72 +93,95 @@
   .tl:last-child .dot::after { display: none; }
   .tl.you .dot::before { background: var(--terra); box-shadow: 0 0 0 1.2mm var(--terra-soft); }
   .tl .what b { font-size: 10pt; color: var(--bark); }
-  .tl .what span:not(.who) { display: block; font-size: 8.8pt; color: var(--ink2); line-height: 1.4; margin-top: .6mm; }
+  .tl .what span:not(.who) { display: block; font-size: 8.8pt; color: var(--ink2); line-height: 1.4; margin-top: .5mm; }
   .who { display: inline-block; font-size: 7pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .4mm 2mm; border-radius: 3mm; margin-left: 1.5mm; vertical-align: 1px; }
   .who.c { background: var(--olive-soft); color: var(--olive); }
   .who.v { background: var(--terra-soft); color: var(--terra); }
+  .note { margin-top: 2mm; background: var(--ochre-soft); border-radius: 5mm 5mm 5mm 1.5mm; padding: 3mm 4.5mm; display: grid; grid-template-columns: 7mm 1fr; gap: 3mm; align-items: center; }
+  .note svg { width: 6mm; height: 6mm; fill: none; stroke: #A8772A; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .note p { font-size: 8.8pt; color: var(--ink2); line-height: 1.4; }
+  .note b { color: var(--bark); }
 
-  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 7mm; }
-  .box { background: #FFFDF9; border: 1px solid var(--line); border-radius: 7mm 7mm 7mm 2mm; padding: 5mm; }
-  .box h4 { font-size: 10.5pt; font-weight: 800; margin-bottom: 2.5mm; color: var(--bark); }
-  .box li { list-style: none; font-size: 9pt; line-height: 1.4; color: var(--ink2); margin-bottom: 1.6mm; padding-left: 5mm; position: relative; }
+  /* Score + you */
+  .duo { display: grid; grid-template-columns: 1.25fr 1fr; gap: 5mm; margin-top: 5mm; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 7mm 7mm 7mm 2mm; padding: 4.5mm 5mm; }
+  .panel .intro { font-size: 8.8pt; color: var(--ink2); line-height: 1.42; margin-top: 1.2mm; }
+  .job { display: grid; grid-template-columns: 10mm 1fr; gap: 3mm; align-items: center; margin-top: 2.8mm; padding-top: 2.8mm; border-top: 1px solid var(--line); }
+  .job:first-of-type { border-top: none; }
+  .score { width: 10mm; height: 10mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 10.5pt; }
+  .hi { background: var(--olive-soft); color: var(--olive); }
+  .mid { background: var(--ochre-soft); color: #A8772A; }
+  .lo { background: var(--terra-soft); color: var(--terra); }
+  .job .t { font-size: 9pt; font-weight: 700; color: var(--bark); }
+  .job .r { font-size: 8.3pt; color: var(--muted); margin-top: .3mm; line-height: 1.35; }
+  .you-list { margin-top: 2.5mm; }
+  .you-item { display: grid; grid-template-columns: 7mm 1fr; gap: 2.5mm; align-items: start; margin-top: 2.6mm; }
+  .you-item .n { width: 6.5mm; height: 6.5mm; border-radius: 50%; background: var(--terra); color: #FFFDF9; font-weight: 800; font-size: 9pt; display: flex; align-items: center; justify-content: center; }
+  .you-item p { font-size: 8.9pt; color: var(--ink2); line-height: 1.4; padding-top: .4mm; }
+  .you-item b { color: var(--bark); }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 4mm; }
+  .box { background: var(--card); border: 1px solid var(--line); border-radius: 7mm 7mm 7mm 2mm; padding: 4.5mm 5mm; }
+  .box h4 { margin-bottom: 2.2mm; }
+  .box li { list-style: none; font-size: 9pt; line-height: 1.4; color: var(--ink2); margin-bottom: 1.5mm; padding-left: 5mm; position: relative; }
   .box.never li::before { content: "✕"; position: absolute; left: 0; color: var(--terra); font-weight: 700; font-size: 8pt; }
   .box.tools li::before { content: "✓"; position: absolute; left: 0; color: var(--olive); font-weight: 700; font-size: 8.5pt; }
-
-  .start { background: var(--bark); color: #FBF6EE; border-radius: 9mm 9mm 9mm 2.5mm; margin-top: 7mm; padding: 6mm; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5mm; }
-  .start .s { border-left: 2px solid var(--ochre); padding-left: 3.5mm; }
-  .start .s .k { font-size: 8pt; color: var(--ochre); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-  .start .s .t { font-size: 10.5pt; font-weight: 700; margin-top: 1mm; }
-  .start .s .d { font-size: 8.6pt; color: #D9CBB8; margin-top: 1mm; line-height: 1.4; }
-  .start .s code { font-family: Consolas, monospace; color: #FBF6EE; background: rgba(255,255,255,.12); padding: 0 1mm; border-radius: 1mm; }
 </style>
 </head>
 <body>
 
 <section class="page">
   <div class="blob" style="width:110mm;height:110mm;right:-38mm;top:-42mm;background:var(--terra-soft);opacity:.75"></div>
-  <div class="blob" style="width:46mm;height:46mm;right:34mm;top:30mm;background:var(--ochre-soft);opacity:.8"></div>
-  <div class="hero">
+  <div class="blob" style="width:46mm;height:46mm;right:14mm;top:22mm;background:var(--ochre-soft);opacity:.8"></div>
+  <div class="wrap hero">
     <div class="tag">Asistente de búsqueda laboral · con Claude</div>
     <h1>Get a Job <span>Kit</span></h1>
-    <p class="lead">Un equipo de búsqueda laboral que trabaja para vos todos los días. <b>Define con vos qué buscar, mejora tu CV, encuentra avisos, ordena tus postulaciones y te prepara para cada entrevista.</b> Vos decidís; Claude hace el trabajo pesado.</p>
-    <div class="stats">
-      <div class="stat"><div class="n">3</div><div class="l">cosas hacés vos: aprobar avisos, decir "sí" y ir a la entrevista</div></div>
-      <div class="stat"><div class="n">0</div><div class="l">datos inventados: todo lo del CV se puede defender en una entrevista</div></div>
-      <div class="stat"><div class="n">100%</div><div class="l">tuyo: corre en tu computadora y tus datos son privados</div></div>
+    <p class="lead">Un asistente que trabaja con vos todos los días. <b>Te ayuda a definir qué buscar, mejora tu CV, encuentra y puntúa avisos, ordena tus postulaciones y te prepara para cada entrevista.</b> Vos elegís qué usar y te postulás; el kit hace el trabajo pesado.</p>
+
+    <div class="start">
+      <div class="head"><b>Empezá en 3 pasos</b><span>Guía completa en el repositorio: docs/PUESTA-EN-MARCHA-WINDOWS.md</span></div>
+      <div class="row">
+        <div class="s"><div class="n">1</div><div><div class="t">Instalá dos programas</div><div class="d">Claude Desktop y Git. Diez minutos.</div></div></div>
+        <div class="arrow">→</div>
+        <div class="s"><div class="n">2</div><div><div class="t">Pegá un mensaje</div><div class="d">Claude baja el kit a tu compu y lo deja andando.</div></div></div>
+        <div class="arrow">→</div>
+        <div class="s"><div class="n">3</div><div><div class="t">Escribí <code>empecemos</code></div><div class="d">Arranca la entrevista y armás tu kit.</div></div></div>
+      </div>
     </div>
   </div>
 
-  <div class="body">
+  <div class="wrap tools-sec">
     <h2><small>Qué hace</small>Seis herramientas, un solo chat</h2>
-    <p class="sub">Todo se pide con tus palabras en Claude Desktop. Nada de código ni de configuraciones raras.</p>
+    <p class="sub">Todo se pide con tus palabras en Claude Desktop. <b>Vos armás tu kit:</b> al empezar te pregunta qué querés usar, prendés solo lo que te sirve y lo cambiás cuando quieras con un mensaje.</p>
 
     <div class="steps">
-      <div class="step"><span class="num">1</span>
+      <div class="step off"><span class="sw off"></span>
         <div class="icon i1"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></div>
         <h3>Definí qué buscar</h3>
-        <p>Si no lo tenés claro, te propone 2 a 4 caminos concretos según tu experiencia y lo que te importa.</p></div>
-      <div class="step"><span class="num">2</span>
+        <p>Si no lo tenés claro, te propone 2 a 4 caminos concretos según tu experiencia y lo que te importa.</p>
+        <div class="offnote">Apagada: esta persona ya sabe qué busca.</div></div>
+      <div class="step"><span class="base">Base</span>
         <div class="icon i2"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></div>
         <h3>Entrevista de perfil</h3>
         <p>Te pregunta de a una cosa y registra toda tu experiencia con evidencia. Es la base de todo lo demás.</p></div>
-      <div class="step"><span class="num">3</span>
+      <div class="step"><span class="sw"></span>
         <div class="icon i3"><svg viewBox="0 0 24 24"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h3>CV más fuerte</h3>
         <p>Revisa tu CV, te dice qué le falta y lo reescribe en PDF. Si querés, uno a medida para cada aviso.</p></div>
-      <div class="step"><span class="num">4</span>
+      <div class="step"><span class="sw"></span>
         <div class="icon i2"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></svg></div>
-        <h3>Búsqueda automática</h3>
-        <p>LinkedIn, Indeed y portales de empresas. Vos elegís días, distancia, modalidad, sueldo y filtros.</p></div>
-      <div class="step"><span class="num">5</span>
+        <h3>Búsqueda con puntaje</h3>
+        <p>LinkedIn, Indeed y portales de empresas, en los días que elijas. Cada aviso llega con un puntaje del 0 al 100.</p></div>
+      <div class="step"><span class="sw"></span>
         <div class="icon i3"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="10" rx="1"/><rect x="17" y="4" width="4" height="13" rx="1"/></svg></div>
         <h3>Tablero y reporte</h3>
-        <p>Tus postulaciones en Notion o Google Sheets, en el celular. Y un reporte por mail con lo nuevo.</p></div>
-      <div class="step"><span class="num">6</span>
+        <p>Tus postulaciones en Notion o Google Sheets, en el celular. Y si querés, un reporte diario por mail.</p></div>
+      <div class="step"><span class="sw"></span>
         <div class="icon i1"><svg viewBox="0 0 24 24"><path d="M4 6h12v9H9l-4 3v-3H4z"/><path d="M18 9h2v9h-1v3l-3-3h-5"/></svg></div>
         <h3>Listo para entrevistar</h3>
         <p>Guía del puesto, tu pitch, historias con resultados, preguntas probables y un simulacro en vivo.</p></div>
     </div>
+    <div class="legend"><span><i></i>Prendida</span><span><i class="off"></i>Apagada</span><span>Ejemplo de un kit armado a medida.</span></div>
 
     <div class="privacy">
       <div class="lock"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
@@ -150,29 +197,51 @@
 <section class="page">
   <div class="blob" style="width:90mm;height:90mm;left:-40mm;bottom:-30mm;background:var(--olive-soft);opacity:.7"></div>
   <div class="blob" style="width:70mm;height:70mm;right:-30mm;top:-25mm;background:var(--ochre-soft);opacity:.8"></div>
-  <div class="top2">
+  <div class="wrap top2">
     <h2><small>Cómo funciona</small>Un día con el kit</h2>
-    <p class="sub">Así se ve un día común, una vez armado tu perfil.</p>
+    <p class="sub">Así se ve un día común con la búsqueda automática prendida.</p>
 
     <div class="timeline">
-      <div class="tl"><div class="time">10:00</div><div class="dot"></div><div class="what"><b>Busca avisos nuevos</b><span class="who c">Claude</span><span>Recorre las plataformas y las empresas que elegiste, saca los repetidos y los que ya viste.</span></div></div>
-      <div class="tl"><div class="time">10:10</div><div class="dot"></div><div class="what"><b>Filtra y puntúa</b><span class="who c">Claude</span><span>Aplica tus reglas (rubro, distancia, modalidad, sueldo) y le pone a cada aviso un puntaje con el motivo.</span></div></div>
-      <div class="tl"><div class="time">10:15</div><div class="dot"></div><div class="what"><b>Actualiza tu tablero y tus mails</b><span class="who c">Claude</span><span>Carga los avisos en Notion o Sheets y marca las respuestas de las empresas: entrevistas, pedidos, rechazos.</span></div></div>
-      <div class="tl"><div class="time">10:20</div><div class="dot"></div><div class="what"><b>Te manda el reporte</b><span class="who c">Claude</span><span>Un mail a vos con lo que necesita tu atención primero y lo nuevo del día.</span></div></div>
-      <div class="tl you"><div class="time">Cuando quieras</div><div class="dot"></div><div class="what"><b>Elegís desde el celular</b><span class="who v">Vos</span><span>Movés a Aprobado lo que te interesa. Son segundos por aviso.</span></div></div>
-      <div class="tl"><div class="time">Siguiente</div><div class="dot"></div><div class="what"><b>CV listo para cada aprobado</b><span class="who c">Claude</span><span>Te deja el PDF, el link del aviso y una pretensión salarial sugerida.</span></div></div>
-      <div class="tl you"><div class="time">Al final</div><div class="dot"></div><div class="what"><b>Te postulás con un "sí"</b><span class="who v">Vos</span><span>Nada sale sin tu confirmación. Cuando una empresa responde, el kit te avisa y te prepara.</span></div></div>
+      <div class="tl"><div class="time">10:00</div><div class="dot"></div><div class="what"><b>Busca avisos nuevos</b><span class="who c">Claude</span><span>A la hora que elegiste, recorre las plataformas y empresas de tu lista y saca los repetidos.</span></div></div>
+      <div class="tl"><div class="time">10:10</div><div class="dot"></div><div class="what"><b>Filtra y puntúa</b><span class="who c">Claude</span><span>Descarta lo que no cumple tus reglas y le pone a cada aviso un puntaje con el motivo.</span></div></div>
+      <div class="tl"><div class="time">10:15</div><div class="dot"></div><div class="what"><b>Actualiza tu tablero y tus mails</b><span class="who c">Claude</span><span>Carga los avisos y marca las respuestas de las empresas: entrevistas, pedidos, rechazos.</span></div></div>
+      <div class="tl"><div class="time">10:20</div><div class="dot"></div><div class="what"><b>Te manda el reporte</b><span class="who c">Claude</span><span>Si lo prendiste: un mail a vos con lo que necesita tu atención y lo nuevo del día.</span></div></div>
+      <div class="tl you"><div class="time">Cuando quieras</div><div class="dot"></div><div class="what"><b>Elegís desde el celular</b><span class="who v">Vos</span><span>Mirás primero los de mayor puntaje y movés a Aprobado los que te interesan.</span></div></div>
+      <div class="tl"><div class="time">Siguiente</div><div class="dot"></div><div class="what"><b>Te dice con qué CV postularte</b><span class="who c">Claude</span><span>Para cada aprobado: el CV a usar (o uno a medida), el link del aviso y una pretensión salarial sugerida.</span></div></div>
+      <div class="tl you"><div class="time">Al final</div><div class="dot"></div><div class="what"><b>Te postulás vos</b><span class="who v">Vos</span><span>En la página de cada empresa, con ese CV. Cuando te responden, el kit lo registra y te prepara.</span></div></div>
+    </div>
+
+    <div class="note">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <p><b>Para que la búsqueda corra sola</b>, la computadora tiene que estar prendida y Claude Desktop abierto a la hora programada. Si estaba apagada, corre apenas la prendés.</p>
+    </div>
+
+    <div class="duo">
+      <div class="panel">
+        <h4>El puntaje: lo mejor, primero</h4>
+        <p class="intro">Cada aviso llega con un puntaje del 0 al 100 según tu perfil y tus reglas, y una línea con el porqué. No perdés tiempo leyendo avisos que no van.</p>
+        <div class="job"><div class="score hi">92</div><div><div class="t">Analista de Operaciones · Empresa A</div><div class="r">Encaja: tu experiencia en procesos y Excel avanzado.</div></div></div>
+        <div class="job"><div class="score mid">74</div><div><div class="t">Coordinador de Proyectos · Empresa B</div><div class="r">Encaja en lo principal; pide inglés avanzado.</div></div></div>
+        <div class="job"><div class="score lo">41</div><div><div class="t">Gerente Regional · Empresa C</div><div class="r">Pide 10 años de experiencia en el rubro.</div></div></div>
+      </div>
+      <div class="panel">
+        <h4>Lo que hacés vos</h4>
+        <div class="you-list">
+          <div class="you-item"><div class="n">1</div><p><b>Contestás la entrevista inicial</b> y elegís qué herramientas usar.</p></div>
+          <div class="you-item"><div class="n">2</div><p><b>Aprobás los avisos</b> que te interesan, desde el celular.</p></div>
+          <div class="you-item"><div class="n">3</div><p><b>Te postulás vos</b>, con el CV que te indica el kit.</p></div>
+          <div class="you-item"><div class="n">4</div><p><b>Vas a las entrevistas</b> con la guía y el simulacro hechos.</p></div>
+        </div>
+      </div>
     </div>
 
     <div class="two">
       <div class="box never">
         <h4>Lo que nunca hace</h4>
         <ul>
-          <li>Inventar experiencia, títulos o números</li>
-          <li>Postularte o mandar mensajes sin tu "sí"</li>
-          <li>Escribir tus contraseñas o crear cuentas</li>
-          <li>Automatizar LinkedIn o el "Easy Apply"</li>
-          <li>Subir tus datos a ningún lado sin que lo sepas</li>
+          <li>Postularse por vos: eso lo hacés siempre vos</li>
+          <li>Automatizar LinkedIn ni el "Easy Apply"</li>
+          <li>Inventar experiencia, títulos ni números en tu CV</li>
         </ul>
       </div>
       <div class="box tools">
@@ -185,12 +254,6 @@
           <li>Unos 40 minutos para la entrevista inicial</li>
         </ul>
       </div>
-    </div>
-
-    <div class="start">
-      <div class="s"><div class="k">Paso 1</div><div class="t">Instalá dos programas</div><div class="d">Claude Desktop y Git para Windows. Diez minutos.</div></div>
-      <div class="s"><div class="k">Paso 2</div><div class="t">Pegá un mensaje</div><div class="d">El de la guía de puesta en marcha. Claude baja el kit a tu compu y lo deja andando.</div></div>
-      <div class="s"><div class="k">Paso 3</div><div class="t">Escribí <code>empecemos</code></div><div class="d">Arranca la entrevista. Desde ahí, el kit trabaja con vos.</div></div>
     </div>
   </div>
   <div class="foot"><span>Get a Job Kit · Joaquín Domínguez</span><span>github.com/joaquitodom/get-a-job-kit</span></div>
