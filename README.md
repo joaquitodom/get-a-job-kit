@@ -50,4 +50,4 @@ Cuando haya una versión nueva, decile a Claude *"traé las mejoras del kit"*. T
 
 ---
 
-Creado y mantenido por Joaquín Domínguez. Para uso personal.
+Creado y mantenido por **[Joaquín Domínguez](https://github.com/joaquitodom)**. Uso personal y sin fines comerciales, bajo la [licencia PolyForm Noncommercial 1.0.0](LICENSE): cualquier copia tiene que mantener este crédito.

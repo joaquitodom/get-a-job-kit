@@ -28,7 +28,6 @@ workday = []  # páginas de empleo Workday, ej. "https://empresa.wd1.myworkdayjo
 # gmail_etiqueta = ""           # etiqueta de Gmail para los mails de búsqueda
 # archivar_sin_accion = false   # sacar de la bandeja lo que no pide acción (siempre se lista en el reporte)
 # busqueda_remota = false       # búsqueda semanal de remotos para el exterior y multilaterales
-# postulacion_asistida = false
 # pdf_nombre = ""               # nombre neutro del PDF que mandás
 # pdf_carpeta = ""
 # max_para_decidir = 45

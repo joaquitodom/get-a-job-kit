@@ -43,7 +43,7 @@ Order matters: nothing is marked as seen until it is safely in Notion, and nothi
    - How many new postings are in `Para decidir`.
    - For every card in `CV listo`: company and role, posting link, the neutral-named PDF, and the salary ask for that type of role. The user applies personally; when the user says the user did, mark `Postulado`.
    - If `mi_email` is set, send that same summary (CVs ready, doubtful ones, counts of the rest) as the daily report **to their own address only**; the kit lets that one send through without a prompt. Never add other recipients. If `reporte = "borrador"` in `busqueda.toml`, leave it as a Gmail draft to that address instead of sending it.
-8. **After their "sí":** if `postulacion_asistida = true`, run the `postular` skill for the listed postings. Otherwise open each application page in the built-in browser, submit nothing, and let them apply; when the user says the user did, mark `Postulado` with the date. Never automate LinkedIn or any "Easy Apply" flow in either case.
+8. **They apply themselves.** The kit never fills or submits application forms. If they ask, open each application page in the built-in browser and stop there; when they say they applied, mark `Postulado` with the date. Never automate LinkedIn or any "Easy Apply" flow.
 
 ## Normal mode (after the ranking evaluation)
 

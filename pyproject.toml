@@ -1,7 +1,9 @@
 [project]
 name = "get-a-job-kit"
 version = "0.1.0"
-description = "Tailored CVs and job search tracking, driven by Claude Desktop"
+description = "Get a Job Kit: job search assistant driven by Claude Desktop"
+authors = [{ name = "Joaquín Domínguez (https://github.com/joaquitodom)" }]
+license = { file = "LICENSE" }
 requires-python = ">=3.12,<3.13"
 dependencies = ["python-docx>=1.1", "openpyxl>=3.1", "python-jobspy>=1.1.82", "docx2pdf>=0.1.8; sys_platform == 'win32'"]
 
