@@ -1,4 +1,4 @@
-"""Candidate D: SetFit learns his own si/no from a few labeled postings, then scores the rest."""
+"""Candidate D: SetFit learns their own si/no from a few labeled postings, then scores the rest."""
 
 import sys
 import time

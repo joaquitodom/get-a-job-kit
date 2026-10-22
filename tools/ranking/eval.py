@@ -1,4 +1,4 @@
-"""Compare ranking candidates on the same postings against his own labels (si / no / tal vez).
+"""Compare ranking candidates on the same postings against their own labels (si / no / tal vez).
 
 A ranker is any object with `name`, `trainable` and `rank(profile, postings) -> postings in order`.
 Trainable rankers also have `fit(profile, postings, labels)`. When any ranker is trainable, every

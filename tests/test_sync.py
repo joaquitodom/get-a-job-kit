@@ -33,75 +33,75 @@ def repos(tmp_path, monkeypatch):
     commit_file(kit, "CLAUDE.md", "v1\n")
     commit_file(kit, "profile/PROFILE.md", "plantilla\n")
     git(kit, "push", "-q", "origin", "main")
-    his = tmp_path / "his"  # the job seeker's clone
-    git(tmp_path, "clone", "-q", str(remote), str(his))
+    their = tmp_path / "their"  # the job seeker's clone
+    git(tmp_path, "clone", "-q", str(remote), str(their))
     for key, value in (("user.name", "t"), ("user.email", "t@t")):
-        git(his, "config", key, value)
-    return kit, his
+        git(their, "config", key, value)
+    return kit, their
 
 
 def test_pull_reports_kit_files_that_changed(repos):
-    kit, his = repos
+    kit, their = repos
     commit_file(kit, "CLAUDE.md", "v2\n")
     git(kit, "push", "-q")
-    message = pull(his)
+    message = pull(their)
     assert "CLAUDE.md" in message
-    assert (his / "CLAUDE.md").read_text() == "v2\n"
+    assert (their / "CLAUDE.md").read_text() == "v2\n"
 
 
 def test_pull_with_nothing_new_says_nothing(repos):
-    _, his = repos
-    assert pull(his) == ""
+    _, their = repos
+    assert pull(their) == ""
 
 
 def test_pull_conflict_aborts_and_keeps_his_work(repos):
-    kit, his = repos
+    kit, their = repos
     commit_file(kit, "profile/PROFILE.md", "del kit\n")
     git(kit, "push", "-q")
-    commit_file(his, "profile/PROFILE.md", "suyo\n")
-    message = pull(his)
+    commit_file(their, "profile/PROFILE.md", "suyo\n")
+    message = pull(their)
     assert "conflicto" in message.lower()
-    assert (his / "profile/PROFILE.md").read_text() == "suyo\n"
-    assert not (his / ".git" / "rebase-merge").exists()
+    assert (their / "profile/PROFILE.md").read_text() == "suyo\n"
+    assert not (their / ".git" / "rebase-merge").exists()
 
 
 def test_pull_without_network_is_silent_and_does_not_raise(repos):
-    _, his = repos
-    git(his, "remote", "set-url", "origin", str(his.parent / "missing.git"))
-    assert pull(his) == ""
+    _, their = repos
+    git(their, "remote", "set-url", "origin", str(their.parent / "missing.git"))
+    assert pull(their) == ""
 
 
 def test_push_commits_and_pushes_uncommitted_data(repos, tmp_path):
-    kit, his = repos
-    (his / "postulaciones").mkdir()
-    (his / "postulaciones" / "banco.md").write_text("cv\n", encoding="utf-8")
-    push(his)
+    kit, their = repos
+    (their / "postulaciones").mkdir()
+    (their / "postulaciones" / "banco.md").write_text("cv\n", encoding="utf-8")
+    push(their)
     git(kit, "pull", "-q")
     assert (kit / "postulaciones" / "banco.md").read_text() == "cv\n"
 
 
 def test_push_never_commits_kit_files(repos):
-    _, his = repos
-    (his / "CLAUDE.md").write_text("editado a mano\n", encoding="utf-8")
-    push(his)
-    assert "CLAUDE.md" in git(his, "status", "--porcelain")
+    _, their = repos
+    (their / "CLAUDE.md").write_text("editado a mano\n", encoding="utf-8")
+    push(their)
+    assert "CLAUDE.md" in git(their, "status", "--porcelain")
 
 
 def test_push_with_nothing_to_send_says_nothing(repos):
-    _, his = repos
-    assert push(his) == ""
+    _, their = repos
+    assert push(their) == ""
 
 
 def test_push_when_remote_moved_ahead_pulls_first_and_then_pushes(repos):
-    kit, his = repos
+    kit, their = repos
     commit_file(kit, "CLAUDE.md", "v2\n")
     git(kit, "push", "-q")
-    (his / "postulaciones").mkdir()
-    (his / "postulaciones" / "fondo.md").write_text("cv\n", encoding="utf-8")
-    assert push(his) == ""
+    (their / "postulaciones").mkdir()
+    (their / "postulaciones" / "fondo.md").write_text("cv\n", encoding="utf-8")
+    assert push(their) == ""
     git(kit, "pull", "-q")
     assert (kit / "postulaciones" / "fondo.md").exists()
-    assert (his / "CLAUDE.md").read_text() == "v2\n"
+    assert (their / "CLAUDE.md").read_text() == "v2\n"
 
 
 from tools.sync import classify_git_error  # noqa: E402
@@ -125,17 +125,17 @@ def test_network_problems_are_classified_as_offline():
 
 
 def test_push_without_git_identity_asks_to_configure_it(repos, monkeypatch, tmp_path):
-    _, his = repos
+    _, their = repos
     for k in ENV:
         monkeypatch.delenv(k, raising=False)
     monkeypatch.setenv("GIT_CONFIG_GLOBAL", str(tmp_path / "no-global"))
     monkeypatch.setenv("GIT_CONFIG_NOSYSTEM", "1")
-    git(his, "config", "--unset", "user.name")
-    git(his, "config", "--unset", "user.email")
-    git(his, "config", "user.useConfigOnly", "true")
-    (his / "postulaciones").mkdir()
-    (his / "postulaciones" / "x.md").write_text("cv\n", encoding="utf-8")
-    assert "user.email" in push(his)
+    git(their, "config", "--unset", "user.name")
+    git(their, "config", "--unset", "user.email")
+    git(their, "config", "user.useConfigOnly", "true")
+    (their / "postulaciones").mkdir()
+    (their / "postulaciones" / "x.md").write_text("cv\n", encoding="utf-8")
+    assert "user.email" in push(their)
 
 
 def _run_main(monkeypatch, capsys, stdin, message):
@@ -165,11 +165,11 @@ def test_stop_hook_does_not_loop_when_claude_already_continued(monkeypatch, caps
 
 
 def test_pull_blocked_by_his_untracked_file_is_reported_not_silent(repos):
-    kit, his = repos
+    kit, their = repos
     commit_file(kit, "cv/master-es.pdf", "del kit\n")
     git(kit, "push", "-q")
-    (his / "cv").mkdir(exist_ok=True)
-    (his / "cv" / "master-es.pdf").write_text("suyo\n", encoding="utf-8")
-    message = pull(his)
+    (their / "cv").mkdir(exist_ok=True)
+    (their / "cv" / "master-es.pdf").write_text("suyo\n", encoding="utf-8")
+    message = pull(their)
     assert "cv/master-es.pdf" in message
-    assert (his / "cv" / "master-es.pdf").read_text() == "suyo\n"
+    assert (their / "cv" / "master-es.pdf").read_text() == "suyo\n"

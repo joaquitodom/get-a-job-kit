@@ -23,7 +23,7 @@ def labels_from_rows(rows: list[dict]) -> dict[str, str]:
         if estado in SI:
             labels[link] = "si"
         elif estado == "Descartado" and r.get("Descarte automático") != "__YES__":
-            # Only his own discards teach his criteria; a rule's discard is the rule's decision.
+            # Only their own discards teach their criteria; a rule's discard is the rule's decision.
             labels[link] = "no"
     return labels
 

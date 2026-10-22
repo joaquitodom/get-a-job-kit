@@ -48,7 +48,7 @@ def archive_external(paths: list[str]) -> None:
 
 @dataclass
 class Dealbreakers:
-    """Only what he confirmed as absolute. Each rule fires only when the posting states the fact."""
+    """Only what the user confirmed as absolute. Each rule fires only when the posting states the fact."""
 
     title_terms: list[str] = field(default_factory=list)
     work_modes: list[str] = field(default_factory=list)
@@ -92,7 +92,7 @@ def order_batch(
     postings: list[Posting], mode: str, day: date, rank=None
 ) -> list[Posting]:
     if mode == "recoleccion" or rank is None:
-        # While his labels are being collected (or until a ranker is chosen), no ranker decides the order.
+        # While their labels are being collected (or until a ranker is chosen), no ranker decides the order.
         shuffled = list(postings)
         random.Random(day.isoformat()).shuffle(shuffled)
         return shuffled
@@ -109,7 +109,7 @@ def score_batch(postings: list[Posting], ranker, profile: str, day: date) -> tup
 
 
 def pick_control(postings: list[Posting], k: int, day: date) -> set[str]:
-    """Random sample that reaches him no matter what the screening decides: unbiased labels for the ranking eval."""
+    """Random sample that reaches them no matter what the screening decides: unbiased labels for the ranking eval."""
     urls = sorted(p.url for p in postings)
     return set(random.Random(f"control-{day.isoformat()}").sample(urls, min(k, len(urls))))
 
@@ -132,7 +132,7 @@ def _salary_fields(p: Posting, rates) -> dict:
 
 
 def _profile_text() -> str:
-    """What the ranker compares postings against: his profile plus his stated preferences."""
+    """What the ranker compares postings against: their profile plus their stated preferences."""
     parts = [Path("profile/PROFILE.md"), Path("profile/preferences.md")]
     return "\n\n".join(p.read_text(encoding="utf-8") for p in parts if p.exists())
 
@@ -177,7 +177,7 @@ def preparar(day: date) -> Path:
         batch = order_batch(kept, mode="recoleccion", day=day)
     cap = raw.get("max_para_decidir")
     control = pick_control(batch, int(raw.get("muestra_control", 10)), day) if cap and len(batch) > cap else set()
-    # "archivo": the sample is only recorded in the batch file (he asked not to see it in Notion, 30-sep-2026).
+    # "archivo": the sample is only recorded in the batch file (the user asked not to see it in Notion, 30-sep-2026).
     control_in_notion = raw.get("muestra_control_destino", "notion") != "archivo"
     DATA.mkdir(exist_ok=True)
     from tools.salary import ExchangeRates
@@ -231,7 +231,7 @@ def confirmar() -> None:
     SEEN.parent.mkdir(exist_ok=True)
     SEEN.write_text(json.dumps(remember(_load_seen(), loaded), ensure_ascii=False, indent=1), encoding="utf-8")
     archive_external(batch.get("externos", []))
-    # A copy with the posting texts where the sync hook saves it: the ranking eval joins it with his Notion labels.
+    # A copy with the posting texts where the sync hook saves it: the ranking eval joins it with their Notion labels.
     archive = Path("postulaciones/lotes") / path.name
     archive.parent.mkdir(parents=True, exist_ok=True)
     archive.write_text(json.dumps({"fecha": batch.get("fecha"), "avisos": batch["avisos"], "descartados": batch["descartados"], "control_archivo": batch.get("control_archivo", [])}, ensure_ascii=False, indent=1), encoding="utf-8")

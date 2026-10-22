@@ -316,7 +316,7 @@ WINDOWS_FORBIDDEN = re.compile(r'[<>:"/\\|?*]')
 
 
 def application_copy(pdf: Path, base: Path, empresa_puesto: str, name: str, english: bool = False) -> Path:
-    """Copy the PDF to <base>/<Empresa_Puesto>/<name>[_EN].pdf: the file he sends never names the company."""
+    """Copy the PDF to <base>/<Empresa_Puesto>/<name>[_EN].pdf: the file the user sends never names the company."""
     folder = base / " ".join(WINDOWS_FORBIDDEN.sub("", empresa_puesto).split())
     folder.mkdir(parents=True, exist_ok=True)
     target = folder / f"{name}{'_EN' if english else ''}.pdf"

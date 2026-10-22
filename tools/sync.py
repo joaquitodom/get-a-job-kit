@@ -1,7 +1,7 @@
 """Keep the shared repo in sync. Run by Claude Code hooks (see .claude/settings.json), never by hand.
 
   uv run python -m tools.sync pull   # on every message: bring in kit changes
-  uv run python -m tools.sync push   # when Claude finishes a turn: save his data and push
+  uv run python -m tools.sync push   # when Claude finishes a turn: save their data and push
 
 Both always exit 0 so a sync problem never blocks the conversation; problems are reported as text.
 """
@@ -161,7 +161,7 @@ def main(argv: list[str] | None = None) -> int:
         except ValueError:
             already_continued = False
         if message in ACTIONABLE and not already_continued:
-            # Make Claude act on it (ask him, run the fix) instead of only showing him a notice.
+            # Make Claude act on it (ask them, run the fix) instead of only showing them a notice.
             print(json.dumps({"decision": "block", "reason": message}, ensure_ascii=False))
         elif message:
             print(json.dumps({"systemMessage": message}, ensure_ascii=False))

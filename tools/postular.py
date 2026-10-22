@@ -1,7 +1,7 @@
 """Deterministic half of assisted applying (the `postular` skill drives the browser).
 
-Decides, field by field, what can be filled from his data sheet and what must go back to him. Hard stops are
-not negotiable: government IDs, passwords and account creation are always his to do, and demographic questions
+Decides, field by field, what can be filled from their data sheet and what must go back to them. Hard stops are
+not negotiable: government IDs, passwords and account creation are always their to do, and demographic questions
 are never guessed. Every submission is logged so a posting is never submitted twice.
 """
 
@@ -140,7 +140,7 @@ def _site(url: str) -> str:
 
 
 def destination_ok(posting_url: str, form_url: str) -> bool:
-    """The form must be on the same site as the posting he approved; a redirect elsewhere needs a new 'sí'."""
+    """The form must be on the same site as the posting the user approved; a redirect elsewhere needs a new 'sí'."""
     return _site(posting_url) == _site(form_url) != ""
 
 

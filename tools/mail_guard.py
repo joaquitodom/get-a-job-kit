@@ -1,10 +1,10 @@
-"""PreToolUse hook for Gmail send_message: skip the permission prompt only when he emails himself.
+"""PreToolUse hook for Gmail send_message: skip the permission prompt only when the user emails themselves.
 
-His request (PEDIDOS 2026-09-27): the daily report goes from his inbox to his own inbox without asking each day.
+Their request (PEDIDOS 2026-09-27): the daily report goes from their inbox to their own inbox without asking each day.
 Any other recipient, or no configured address, falls back to the normal prompt. This hook never denies and
 never widens anything else: it only removes the prompt in that one safe case.
 
-His address comes from `mi_email` in profile/busqueda.toml.
+Their address comes from `mi_email` in profile/busqueda.toml.
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ def _as_list(value) -> list[str]:
 
 
 def decide(tool_input: dict, own_address: str | None) -> str | None:
-    """'allow' if every recipient is his own address; None means: leave it to the normal prompt."""
+    """'allow' if every recipient is their own address; None means: leave it to the normal prompt."""
     if not own_address:
         return None
     to = _as_list(tool_input.get("to"))

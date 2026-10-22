@@ -5,7 +5,7 @@
 
 `leer` understands LinkedIn (/jobs/view/<id> or ?currentJobId=<id>), Workday, Lever, Greenhouse and Ashby links.
 Anything else: open it in the built-in browser. LinkedIn is read only through its public guest pages (the same a
-logged-out visitor sees): never his account, never the browser, never "Easy Apply".
+logged-out visitor sees): never their account, never the browser, never "Easy Apply".
 Saving cuts the browser and screenshot cost of reading each posting (usage budget, CLAUDE.md).
 """
 

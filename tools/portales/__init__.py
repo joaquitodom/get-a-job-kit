@@ -24,7 +24,7 @@ SITES = {"bumeran": "https://www.bumeran.com.ar", "zonajobs": "https://www.zonaj
 
 
 def search_url(site: str, term: str) -> str:
-    """Results page for a search term. Only the sites whose terms he accepted the risk for; never LinkedIn."""
+    """Results page for a search term. Only the sites whose terms the user accepted the risk for; never LinkedIn."""
     if site not in SITES:
         raise ValueError(f"Sitio no soportado: {site}. Solo {', '.join(SITES)}.")
     plain = "".join(c for c in unicodedata.normalize("NFKD", term.lower()) if not unicodedata.combining(c))
